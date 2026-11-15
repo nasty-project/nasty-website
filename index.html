@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NASty — storage with attitude</title>
+<meta name="description" content="NASty is a NAS operating system built on bcachefs and NixOS: NFS, SMB, iSCSI and NVMe-oF from one web UI, with atomic updates and one-click rollback.">
+<meta property="og:title" content="NASty — storage with attitude">
+<meta property="og:description" content="A NAS operating system built on bcachefs and NixOS.">
+<meta property="og:image" content="https://nasty-project.eu/shots/dark/dashboard.webp">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+	<a href="#top" class="brand"><img src="assets/favicon.svg" alt="" width="28" height="28"> NASty</a>
+	<nav>
+		<a href="#features">Features</a>
+		<a href="#kubernetes">Kubernetes</a>
+		<a href="#why">Why</a>
+		<a href="#start">Get started</a>
+		<a href="#faq">FAQ</a>
+		<a href="https://github.com/nasty-project/nasty" class="gh">GitHub</a>
+	</nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+	<picture class="logo">
+		<source srcset="assets/nasty-white.svg" media="(prefers-color-scheme: dark)">
+		<img src="assets/nasty.svg" alt="NASty" width="260">
+	</picture>
+	<h1>A NAS appliance built on bcachefs.</h1>
+	<p class="lead">Turn commodity hardware into a storage appliance serving NFS, SMB, iSCSI and NVMe-oF, managed from one web UI, updated atomically, and rolled back in one click when things go sideways.</p>
+	<div class="cta">
+		<a class="btn primary" href="https://github.com/nasty-project/nasty/releases/latest">Download the ISO</a>
+		<a class="btn" href="https://github.com/nasty-project/nasty">View on GitHub</a>
+	</div>
+	<ul class="chips">
+		<li>bcachefs</li><li>NixOS</li><li>NFS</li><li>SMB</li><li>iSCSI</li><li>NVMe-oF</li><li>Kubernetes CSI</li><li>x86_64 &amp; aarch64</li>
+	</ul>
+	<figure class="shot hero-shot">
+		<picture>
+			<source srcset="shots/dark/dashboard.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/dashboard.webp" alt="NASty dashboard showing services, containers, CPU, memory and storage" width="1600" height="1000">
+		</picture>
+	</figure>
+</section>
+
+<section id="features" class="features">
+
+	<article class="feature">
+		<div class="text">
+			<p class="kicker">Storage</p>
+			<h2>Everything bcachefs can do, one click away</h2>
+			<p>Compression, checksumming, erasure coding, tiering, encryption and O(1) snapshots. Create filesystem or block subvolumes with their own quotas, compression and tiering, and see at a glance which shares, apps and backups use each one.</p>
+			<ul>
+				<li>Instant snapshots, writable clones and whole-subvolume rollback</li>
+				<li>Lock and unlock encrypted filesystems, with optional TPM2 auto-unlock</li>
+				<li>Scrubs, device evacuation and reconcile with live progress</li>
+			</ul>
+		</div>
+		<figure class="shot"><picture>
+			<source srcset="shots/dark/subvolumes.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/subvolumes.webp" alt="Subvolumes page listing media, photos, documents and block volumes" width="1600" height="1000" loading="lazy">
+		</picture></figure>
+	</article>
+
+	<article class="feature flip">
+		<div class="text">
+			<p class="kicker">Sharing</p>
+			<h2>Four protocols, one place</h2>
+			<p>NFS and SMB for files, iSCSI and NVMe-oF for blocks, each with per-share access control. SMB shares can be discoverable macOS Time Machine destinations, and block targets can run over RDMA on RoCE and InfiniBand NICs.</p>
+			<ul>
+				<li>Per-user and per-group SMB access</li>
+				<li>Dedicated iSCSI and NVMe-oF targets per volume</li>
+				<li>Password-, expiry- and download-limited guest links</li>
+			</ul>
+		</div>
+		<figure class="shot"><picture>
+			<source srcset="shots/dark/shares.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/shares.webp" alt="Sharing page with SMB shares for media, documents, Time Machine and photos" width="1600" height="1000" loading="lazy">
+		</picture></figure>
+	</article>
+
+	<article class="feature">
+		<div class="text">
+			<p class="kicker">Apps &amp; VMs</p>
+			<h2>Run your services next to your data</h2>
+			<p>Deploy single Docker containers or whole Compose stacks, with private registries, HTTPS ingress, managed networks, startup order and live resource usage. QEMU/KVM virtual machines come with a browser console, disk snapshots and hardware passthrough.</p>
+			<ul>
+				<li>Jellyfin, Immich, Home Assistant, or anything with an image</li>
+				<li>App data that moves with your storage</li>
+				<li>IOMMU, USB and SR-IOV passthrough for VMs</li>
+			</ul>
+		</div>
+		<figure class="shot"><picture>
+			<source srcset="shots/dark/apps.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/apps.webp" alt="Apps page with Jellyfin, Uptime Kuma, IT-Tools and a Compose stack running" width="1600" height="1000" loading="lazy">
+		</picture></figure>
+	</article>
+
+	<article class="feature flip">
+		<div class="text">
+			<p class="kicker">Backups</p>
+			<h2>Encrypted, deduplicated, scheduled</h2>
+			<p>Incremental backups to local disks, S3, SFTP, REST or Backblaze B2, each with its own schedule and retention. Restore a single file, a whole snapshot, or rebuild a fresh box from an existing repository.</p>
+			<ul>
+				<li>Secrets encrypted at rest</li>
+				<li>One-click system recovery backups</li>
+				<li>Snapshot before every run</li>
+			</ul>
+		</div>
+		<figure class="shot"><picture>
+			<source srcset="shots/dark/backups.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/backups.webp" alt="Backups page with nightly, hourly and system recovery profiles" width="1600" height="1000" loading="lazy">
+		</picture></figure>
+	</article>
+
+	<article class="feature">
+		<div class="text">
+			<p class="kicker">Updates</p>
+			<h2>Atomic updates, instant rollback</h2>
+			<p>NASty is NixOS underneath. An update either applies completely or not at all, and every update is a new generation you can roll back to. Pick your flavor: <strong>Mild</strong> for tagged releases, <strong>Spicy</strong> for pre-releases, or <strong>Nasty</strong> for the latest commit.</p>
+			<ul>
+				<li>Pre-built binaries for x86_64 and aarch64</li>
+				<li>Optional Secure Boot with guided enrollment</li>
+				<li>Your own NixOS settings in <code>custom.nix</code>, kept across upgrades</li>
+			</ul>
+		</div>
+		<figure class="shot"><picture>
+			<source srcset="shots/dark/update.webp" media="(prefers-color-scheme: dark)">
+			<img src="shots/light/update.webp" alt="Update page with version, build steps and release switch" width="1600" height="1000" loading="lazy">
+		</picture></figure>
+	</article>
+
+</section>
+
+<section class="grid-section">
+	<h2>And a lot more</h2>
+	<div class="grid">
+		<div class="card"><h3>Monitoring &amp; alerts</h3><p>Custom dashboards with 30-day history, alert rules, and delivery by email, Telegram, ntfy, Signal or webhook. Optional Prometheus endpoint.</p></div>
+		<div class="card"><h3>Disk health</h3><p>ATA, NVMe and SAS/SCSI monitoring with per-disk details and topology.</p></div>
+		<div class="card"><h3>Access control</h3><p>Roles, scoped API tokens, OIDC single sign-on, passkeys, and an append-only audit log.</p></div>
+		<div class="card"><h3>Safe networking</h3><p>Network changes apply, then revert automatically unless you confirm, so a typo can't lock you out.</p></div>
+		<div class="card"><h3>TLS &amp; VPN</h3><p>Let's Encrypt certificates and built-in Tailscale with one-click setup.</p></div>
+		<div class="card"><h3>Firewall</h3><p>Deny-by-default nftables with per-service source and interface rules.</p></div>
+		<div class="card"><h3>File browser &amp; terminal</h3><p>Browse, upload and edit files, or open a shell with cheatsheets, right in the browser.</p></div>
+		<div class="card"><h3>Open APIs</h3><p>JSON-RPC over WebSocket and a documented REST API. <a href="https://nasty-api.pages.dev">Browse the API</a>.</p></div>
+	</div>
+</section>
+
+<section id="kubernetes" class="band">
+	<div class="text">
+		<p class="kicker">Kubernetes</p>
+		<h2>Storage for your cluster</h2>
+		<p>NASty provisions persistent volumes, snapshots and clones on demand over all four protocols.</p>
+	</div>
+	<div class="links">
+		<a href="https://github.com/nasty-project/nasty-csi"><strong>nasty-csi</strong><span>CSI driver: provisioning, snapshots, clones, online expansion</span></a>
+		<a href="https://github.com/nasty-project/nasty-chart"><strong>nasty-chart</strong><span>Helm chart for a one-command install</span></a>
+		<a href="https://github.com/nasty-project/nasty-plugin"><strong>kubectl-nasty</strong><span>Inspect volumes, snapshots and health from the CLI</span></a>
+		<a href="https://github.com/nasty-project/nasty-ha"><strong>nasty-ha</strong><span>Home Assistant integration</span></a>
+		<a href="https://github.com/nasty-project/nasty-top"><strong>nasty-top</strong><span>Live per-device IO, latency and tuning in the terminal</span></a>
+	</div>
+</section>
+
+<section id="why" class="why">
+	<div>
+		<h2>Why bcachefs?</h2>
+		<p>It's GPL and fits Linux natively, with no DKMS. A filesystem is just a filesystem, subvolumes are just directories, and a snapshot is a first-class subvolume with no dependency chains. Tiering, erasure coding and online repair come built in.</p>
+	</div>
+	<div>
+		<h2>Why NixOS?</h2>
+		<p>A storage appliance should be one atomic unit you can update, roll back and reproduce. No half-upgraded states, no package conflicts at 2am, and the whole system defined in code.</p>
+	</div>
+</section>
+
+<section id="start" class="start">
+	<h2>Get started in minutes</h2>
+	<ol>
+		<li><strong>Download</strong> the latest ISO from <a href="https://github.com/nasty-project/nasty/releases/latest">Releases</a>.</li>
+		<li><strong>Boot</strong> it on your hardware, pick a disk and press Enter.</li>
+		<li><strong>Open</strong> <code>https://&lt;nasty-ip&gt;</code> in your browser.</li>
+		<li><strong>Sign in</strong> as <code>admin</code> / <code>admin</code> and set a new password.</li>
+	</ol>
+	<p class="note">NASty is young and moves fast, and so does bcachefs. It's tested hard: 170 Kubernetes end-to-end tests, hundreds of CSI unit and sanity tests, and VM tests on every change. It's a great fit for homelabs, development and learning. Keep a backup of anything irreplaceable.</p>
+</section>
+
+<section id="faq" class="faq">
+	<h2>FAQ</h2>
+	<details><summary>What hardware does it run on?</summary><p>Any x86_64 or aarch64 machine that boots a UEFI ISO, from mini PCs to rack servers and ARM boards. Legacy BIOS works experimentally on x86_64. Pre-built binaries mean no compiling on small boxes.</p></details>
+	<details><summary>How are snapshots different from ZFS?</summary><p>In bcachefs a snapshot is a subvolume in its own right. Delete the parent and the snapshot survives: no promote, no detach, no dependency chains. A clone is just a writable snapshot.</p></details>
+	<details><summary>Can I add my own NixOS configuration?</summary><p>Yes. Put anything the web UI doesn't expose in <code>/etc/nixos/custom.nix</code>. NASty imports it and never overwrites it.</p></details>
+	<details><summary>Can I run Jellyfin?</summary><p>Yes, as an app, with no NixOS knowledge needed. See <a href="https://github.com/nasty-project/nasty/blob/main/docs/jellyfin.md">Jellyfin on NASty</a>.</p></details>
+	<details><summary>Does it send telemetry?</summary><p>A random installation ID and daily aggregate counts, with no names, paths, hostnames or hardware IDs. Turn it off in Settings → Telemetry. <a href="https://github.com/nasty-project/nasty-telemetry">Details</a>.</p></details>
+	<details><summary>Where does the name come from?</summary><p>NAS + ty. A NAS that's a bit nasty.</p></details>
+</section>
+
+</main>
+
+<footer>
+	<p>NASty is free software under the GPL-3.0.</p>
+	<p><a href="https://github.com/nasty-project">GitHub</a> · <a href="https://github.com/nasty-project/nasty/issues">Issues</a> · <a href="https://nasty-api.pages.dev">API</a> · <a href="https://matrix.to/#/#_oftc_%23bcache:matrix.org">Matrix</a></p>
+</footer>
+
+</body>
+</html>
